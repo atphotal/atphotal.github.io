@@ -247,17 +247,20 @@
         startButton.addEventListener('click', () => { recognition.start(); });
         //stopButton.addEventListener('click', () => { recognition.stop(); });
 
+        const stringWithoutSpaces = "";
         recognition.addEventListener('result', (event) => {
             const result = event.results[event.results.length - 1][0].transcript;
             resultElement.textContent = result;
-            const stringWithoutSpaces = result.replace(/\s/g, '');
-            alert(stringWithoutSpaces);
-            for (let i = 0; i < timeZones.length; i++) {
-                if (stringWithoutSpaces === timeZones[i]) {
-                    alert("Matched");
-                    break;
-                }
+            stringWithoutSpaces = result.replace(/\s/g, '');
+
+        });
+        alert(stringWithoutSpaces);
+        for (let i = 0; i < timeZones.length; i++) {
+            if (stringWithoutSpaces === timeZones[i]) {
+                alert("Matched");
+                break;
             }
+        }
         });
     </script>
 </body>
