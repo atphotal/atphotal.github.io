@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" href="logo.png" type="image/x.icon">
+    <title>TimeRhythms - World Analog Clock</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS for Dark Theme and Background Image -->
+    <style>
+        body {
+            background-image: url('colorful.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            /* Center horizontally */
+            align-items: center;
+            /* Center vertically */
+            height: 100vh;
+            /* Make the body take up the full viewport height */
+            transition: background-color 0.3s ease, background-image 0.3s ease;
+            /* Smooth transition for dark mode */
+        }
+
+        .container {
+            background-color: transparent;
+            /* Transparent background for the container */
+            border-radius: 10px;
+            padding: 20px;
+            transition: background-color 0.3s ease;
+            /* Smooth transition for dark mode */
+        }
+
+        .transparent-div {
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent black background for divs */
+            padding: 20px;
+            border-radius: 10px;
+            color: #fff;
+        }
+
+        .website-name {
+            font-size: 36px;
+            /* Larger font size for the name */
+            font-weight: bold;
+            /* Make the name bold */
+            text-transform: uppercase;
+            /* Uppercase the name */
+            text-align: center;
+            /* Center align the name */
+            margin-bottom: 20px;
+            /* Add some spacing below the name */
+            animation: nameAnimation 2s ease-in-out infinite;
+            /* Add animation to the name */
+        }
+
+        @keyframes nameAnimation {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+                /* Name scales up at 50% of the animation */
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            color: #fff;
+        }
+
+        select.form-control {
+            background-color: transparent;
+            /* Transparent background for select */
+            color: #fff;
+            border: none;
+            padding: 10px;
+            /* Add padding to the select box */
+            width: 100%;
+            /* Make the select box width 100% */
+            transition: background-color 0.3s ease, color 0.3s ease;
+            /* Smooth transition for select */
+        }
+
+        select.form-control option {
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent black background for options */
+            color: #fff;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        /* Dark Mode Toggle Styles */
+        .dark-mode-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            /* Smooth transition for button */
+        }
+        .voice-button {
+            /* position: fixed;
+            top: 20px;
+            right: 20px; */
+            background-color: #333333;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            /* Smooth transition for button */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Dark Mode Toggle Button -->
+    <button class="dark-mode-button" onclick="toggleDarkMode()">🌙</button>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 transparent-div">
+                <center>
+                    <img src="logo.png" alt="logo" height="200px">
+                </center>
+                <h1 class="website-name">TimeRhythms - World Analog Clock</h1>
+            </div>
+            <div class="col-md-6 transparent-div">
+                <form action="clock.html" method="get">
+                    <div class="form-group">
+                        <select class="form-control" name="timezone" id="timezone" required>
+
+                        </select>
+                    </div>
+                    <center>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </center><br><br>
+                    <textarea id = "result" rows="8" cols="80"></textarea> <br><br>
+                    <center>
+                        <button type="button" class="voice-button" id = "start">🎙️</button>
+                    </center>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        
+    </script>
+
+    <script>
+        // Function to toggle dark mode
+        function toggleDarkMode() {
+            const body = document.body;
+            const container = document.querySelector('.container');
+            const darkModeButton = document.querySelector('.dark-mode-button');
+
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                container.style.backgroundColor = 'transparent';
+                darkModeButton.textContent = '🌙';
+                body.style.backgroundImage = 'url("colorful.jpg")'; // Change to your light background image URL
+            } else {
+                body.classList.add('dark-mode');
+                container.style.backgroundColor = 'transparent';
+                darkModeButton.textContent = '☀️';
+                body.style.backgroundImage = 'url("oldtext.jpg")'; // Change to your dark background image URL
+            }
+        }
+    </script>
+
+    <script>
+        // An array of time zones
+        const timeZones = [
+            "Africa/Abidjan", "Africa/Algiers", "Africa/Bangui", "Africa/Harare", "Africa/Johannesburg",
+            "Africa/Libreville", "Africa/Libreville", "Africa/Libreville", "Africa/Libreville", "Africa/Libreville",
+            "Africa/Tripoli", "America/Adak", "America/Araguaina", "America/Araguaina", "America/Araguaina",
+            "America/Araguaina", "America/Araguaina", "America/Araguaina", "America/Araguaina", "America/Campo_Grande",
+            "America/Chicago", "America/Chihuahua", "America/Costa_Rica", "America/Creston", "America/Danmarkshavn",
+            "America/Dawson_Creek", "America/Denver", "America/Dominica", "America/Guayaquil", "America/Halifax",
+            "America/Indiana/Indianapolis", "America/Indiana/Petersburg", "America/Jamaica", "America/Los_Angeles", "America/Maceio",
+            "America/Manaus", "America/Mexico_City", "America/New_York", "America/Panama", "America/Phoenix",
+            "America/Port_of_Spain", "America/Santa_Isabel", "America/Santiago", "America/Toronto", "Antarctica/Casey",
+            "Antarctica/South_Pole", "Arctic/Longyearbyen", "	Asia/Aden", "Asia/Almaty", "Asia/Atyrau",
+            "Asia/Bangkok", "Asia/Barnaul", "Asia/Brunei", "Asia/Calcutta", "Asia/Colombo",
+            "Asia/Chongqing", "Asia/Dhaka", "Asia/Dubai", "Asia/Gaza", "Asia/Hong_Kong",
+            "Asia/Jakarta", "Asia/Jerusalem", "Asia/Kabul", "Asia/Karachi", "Asia/Kathmandu",
+            "Asia/Kolkata", "Asia/Novosibirsk", "Asia/Qatar", "Asia/Shanghai", "Asia/Singapore",
+            "Asia/Tehran", "Asia/Tokyo", "Asia/Vladivostok", "Atlantic/Bermuda", "Atlantic/South_Georgia",
+            "Australia/Adelaide", "Australia/Brisbane", "Australia/Melbourne", "Australia/Perth", "Australia/Sydney",
+            "Europe/Andorra", "Europe/Astrakhan", "Europe/Athens", "Europe/Berlin", "Europe/Budapest",
+            "Europe/Gibraltar", "Europe/Helsinki", "Europe/Istanbul", "Europe/Kirov", "Europe/Lisbon",
+            "Europe/London", "Europe/Madrid", "Europe/Moscow", "Europe/Paris", "Europe/Riga",
+            "Europe/Rome", "Europe/Ulyanovsk", "Europe/Zurich", "Indian/Chagos", "Indian/Maldives",
+            "Indian/Mauritius", "Pacific/Apia", "Pacific/Chatham", "Pacific/Easter", "Pacific/Fiji",
+            "Pacific/Guam", "Pacific/Pago_Pago", "Pacific/Port_Moresby", "Pacific/Tarawa", "",
+            // Add more time zones as needed
+        ];
+
+        function populateTimeZones() {
+            const select = document.getElementById('timezone');
+
+            timeZones.forEach((zone) => {
+                const option = document.createElement('option');
+                option.value = zone;
+                option.textContent = zone;
+                select.appendChild(option);
+            });
+        }
+
+        function onPageLoad() {
+            populateTimeZones();
+        }
+        window.onload = onPageLoad;
+
+        //voice
+        var startButton = document.getElementById('start');
+        //var stopButton = document.getElementById('stop');
+        var resultElement = document.getElementById('result');
+
+        var recognition = new webkitSpeechRecognition();
+
+        recognition.lang = window.navigator.language;
+        recognition.interimResults = true;
+
+        startButton.addEventListener('click', () => { recognition.start(); });
+        //stopButton.addEventListener('click', () => { recognition.stop(); });
+
+        recognition.addEventListener('result', (event) => {
+            const result = event.results[event.results.length - 1][0].transcript;
+            resultElement.textContent = result;
+        });
+    </script>
+</body>
+
+</html>
