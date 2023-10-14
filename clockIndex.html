@@ -255,6 +255,12 @@
             const result = event.results[event.results.length - 1][0].transcript;
             resultElement.textContent = result;
         });
+        // Add an event listener for when recognition is stopped
+        recognition.addEventListener('end', () => {
+            const resultText = resultElement.value; // Get the text from the textarea
+            alert("You said: " + resultText);
+        });
+        
     </script>
 </body>
 
