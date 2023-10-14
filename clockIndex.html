@@ -118,6 +118,7 @@
             transition: background-color 0.3s ease, color 0.3s ease;
             /* Smooth transition for button */
         }
+
         .voice-button {
             /* position: fixed;
             top: 20px;
@@ -130,6 +131,9 @@
             cursor: pointer;
             transition: background-color 0.3s ease, color 0.3s ease;
             /* Smooth transition for button */
+        }
+        #result {
+            /* display: none; */
         }
     </style>
 </head>
@@ -155,18 +159,18 @@
                     </div>
                     <center>
                         <button type="submit" class="btn btn-primary">Submit</button>
-                    </center><br><br>
-                    <textarea id = "result" rows="8" cols="80"></textarea> <br><br>
+                    </center><br><br>                    
                     <center>
-                        <button type="button" class="voice-button" id = "start">🎙️</button>
+                        <button type="button" class="voice-button" id="start">🎙️</button>
                     </center>
+                    <textarea id="result" rows="1" cols="40"></textarea> <br><br>
                 </form>
             </div>
         </div>
     </div>
 
     <script type="text/javascript">
-        
+
     </script>
 
     <script>
@@ -246,21 +250,11 @@
 
         startButton.addEventListener('click', () => { recognition.start(); });
         //stopButton.addEventListener('click', () => { recognition.stop(); });
-
-        const stringWithoutSpaces = "";
+        ;
         recognition.addEventListener('result', (event) => {
             const result = event.results[event.results.length - 1][0].transcript;
             resultElement.textContent = result;
-            stringWithoutSpaces = result.replace(/\s/g, '');
-
         });
-        alert(stringWithoutSpaces);
-        for (let i = 0; i < timeZones.length; i++) {
-            if (stringWithoutSpaces === timeZones[i]) {
-                alert("Matched");
-                break;
-            }
-        }
     </script>
 </body>
 
