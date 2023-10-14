@@ -261,8 +261,8 @@
             //alert("You said: " + resultText);
             var stringWithoutSpaces = resultText.replace(/\s/g, '');
             for (let i = 0; i < timeZones.length; i++) {
-                if (stringWithoutSpaces === timeZones[i]) {
-                    alert("Matched With index:" + i + "with value:" + timeZones[i]);
+                if (stringWithoutSpaces.toLowerCase() === timeZones[i].toLowerCase()) {
+                    alert("Matched With index:" + i + " with value:" + timeZones[i]);
                     break;
                 }
             }
