@@ -263,6 +263,13 @@
             for (let i = 0; i < timeZones.length; i++) {
                 if (stringWithoutSpaces.toLowerCase() === timeZones[i].toLowerCase()) {
                     alert("Matched With index:" + i + " with value:" + timeZones[i]);
+                    // Get the select element
+                    const select = document.getElementById('timezone');
+                    // Set the selected option based on the matched index
+                    select.selectedIndex = index;
+                    // Get the form element
+                    const form = document.querySelector('form');
+                    form.submit(); // Submit the form
                     break;
                 }
             }
