@@ -10,7 +10,7 @@
     <!-- Custom CSS for Dark Theme and Background Image -->
     <style>
         body {
-            background-image: url('colorful.jpg');
+            background-image: url('colorful-min.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             color: #fff;
@@ -184,12 +184,12 @@
                 body.classList.remove('dark-mode');
                 container.style.backgroundColor = 'transparent';
                 darkModeButton.textContent = '🌙';
-                body.style.backgroundImage = 'url("colorful.jpg")'; // Change to your light background image URL
+                body.style.backgroundImage = 'url("colorful-min.jpg")'; // Change to your light background image URL
             } else {
                 body.classList.add('dark-mode');
                 container.style.backgroundColor = 'transparent';
                 darkModeButton.textContent = '☀️';
-                body.style.backgroundImage = 'url("oldtext.jpg")'; // Change to your dark background image URL
+                body.style.backgroundImage = 'url("galexy-min.png")'; // Change to your dark background image URL
             }
         }
     </script>
@@ -262,7 +262,7 @@
             var stringWithoutSpaces = resultText.replace(/\s/g, '');
             for (let i = 0; i < timeZones.length; i++) {
                 if (stringWithoutSpaces.toLowerCase() === timeZones[i].toLowerCase()) {
-                    alert("Matched With index:" + i + " with value:" + timeZones[i]);
+                    //alert("Matched With index:" + i + " with value:" + timeZones[i]);
                     // Get the select element
                     const select = document.getElementById('timezone');
                     // Set the selected option based on the matched index
