@@ -258,7 +258,14 @@
         // Add an event listener for when recognition is stopped
         recognition.addEventListener('end', () => {
             const resultText = resultElement.value; // Get the text from the textarea
-            alert("You said: " + resultText);
+            //alert("You said: " + resultText);
+            var stringWithoutSpaces = resultText.replace(/\s/g, '');
+            for (let i = 0; i < timeZones.length; i++) {
+                if (stringWithoutSpaces === timeZones[i]) {
+                    alert("Matched With index:" + i + "with value:" + timeZones[i]);
+                    break;
+                }
+            }
         });
         
     </script>
