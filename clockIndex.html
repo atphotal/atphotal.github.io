@@ -257,17 +257,21 @@
         });
         // Add an event listener for when recognition is stopped
         recognition.addEventListener('end', () => {
+
+            var stringWithoutSpaces;
             const resultText = resultElement.value; // Get the text from the textarea
             //alert("You said: " + resultText);
             alert(resultText);
             if (resultText.includes('slash')) {
                 var newResultText = resultText.replace(/\s+slash\s+/g, '/').trim();
+                stringWithoutSpaces = newResultText.replace(/\s/g, '');
                 alert(newResultText);
             } else {
+                stringWithoutSpaces = resultText.replace(/\s/g, '');
                 alert("The string does not contain 'slash'.");
             }
             
-            var stringWithoutSpaces = resultText.replace(/\s/g, '');
+            //stringWithoutSpaces = resultText.replace(/\s/g, '');
             for (let i = 0; i < timeZones.length; i++) {
                 if (stringWithoutSpaces.toLowerCase() === timeZones[i].toLowerCase()) {
                     //alert("Matched With index:" + i + " with value:" + timeZones[i]);
