@@ -259,12 +259,12 @@
         recognition.addEventListener('end', () => {
             const resultText = resultElement.value; // Get the text from the textarea
             //alert("You said: " + resultText);
-            console.log(resultText);
+            alert(resultText);
             if (resultText.includes('slash')) {
                 resultText = resultText.replace(/\s+slash\s+/g, '/').trim();
-                console.log(resultText);
+                alert(resultText);
             } else {
-                console.log("The string does not contain 'slash'.");
+                alert("The string does not contain 'slash'.");
             }
             
             var stringWithoutSpaces = resultText.replace(/\s/g, '');
