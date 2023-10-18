@@ -261,16 +261,16 @@
             var stringWithoutSpaces;
             const resultText = resultElement.value; // Get the text from the textarea
             //alert("You said: " + resultText);
-            alert(resultText);
+            //alert(resultText);
             if (resultText.includes('slash')) {
                 var newResultText = resultText.replace(/\s+slash\s+/g, '/').trim();
                 stringWithoutSpaces = newResultText.replace(/\s/g, '');
-                alert(newResultText);
+                //alert(newResultText);
             } else {
                 stringWithoutSpaces = resultText.replace(/\s/g, '');
-                alert("The string does not contain 'slash'.");
+                //alert("The string does not contain 'slash'.");
             }
-            alert("Without" + stringWithoutSpaces);
+            //alert("Without" + stringWithoutSpaces);
             //stringWithoutSpaces = resultText.replace(/\s/g, '');
             for (let i = 0; i < timeZones.length; i++) {
                 if (stringWithoutSpaces.toLowerCase() === timeZones[i].toLowerCase()) {
