@@ -261,8 +261,8 @@
             //alert("You said: " + resultText);
             alert(resultText);
             if (resultText.includes('slash')) {
-                resultText = resultText.replace(/\s+slash\s+/g, '/').trim();
-                alert(resultText);
+                var newResultText = resultText.replace(/\s+slash\s+/g, '/').trim();
+                alert(newResultText);
             } else {
                 alert("The string does not contain 'slash'.");
             }
